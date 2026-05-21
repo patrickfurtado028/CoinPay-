@@ -9,6 +9,11 @@ const web3 = new Web3('https://seu-endpoint-aqui.quiknode.pro/abc/');
 app.use(express.static('public'));
 app.use(express.json());
 
+// Serve index.html for root path
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Rota simples para o front registrar o pedido (ex: TX-12345)
 app.post('/api/registrar', (req, res) => {
     console.log("Novo pedido registrado:", req.body);
